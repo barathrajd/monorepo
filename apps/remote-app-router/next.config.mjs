@@ -5,17 +5,15 @@ const nextConfig = {
   reactStrictMode: true,
   webpack(config, options) {
     const { isServer } = options;
-    // if (!options.isServer) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'remote',
+        name: 'remoteApp',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './RemoteApp': './component/Sidebar.tsx',
+          './RemoteAppRouter': './app/components/Navbar.tsx',
         },
       })
     );
-    // }
 
     return config;
   },
